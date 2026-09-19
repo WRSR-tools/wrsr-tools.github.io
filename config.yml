@@ -28,11 +28,11 @@
 # ──────────────────────────────────
 # Site identity
 # ──────────────────────────────────
-sitename: MD-CMS Phase 7 Test
-navigation: sidebar          # sidebar | topbar
-theme: theme.yml             # presentational config — edit theme.yml to customise colours, fonts, and layout
+sitename: WRSR-Tools
+navigation: sidebar
+theme: assets/themes/tx-zim-bold.yaml
 
-pwa: yes
+pwa: no
 pwa-name: MD-CMS Phase 7 Test
 pwa-shortname: MDCMS Test
 pwa-colour: "#2563EB"

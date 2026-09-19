@@ -4,7 +4,7 @@
 
 sections:
   - code: wrsrcli
-    defaultname: Wrsrcli
+    defaultname: wrsrcli
     sort: 100
     pagesvisibility: visible
 
