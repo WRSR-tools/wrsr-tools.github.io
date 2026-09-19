@@ -1,0 +1,50 @@
+[
+  {
+    "file": "pages/home.md",
+    "title": "Home",
+    "section-id": null,
+    "keywords": "",
+    "description": "",
+    "author": "WRSR-Tools",
+    "created": "",
+    "modified": "",
+    "language": "en",
+    "body": "# `wrsrcli` - an asset manager for Workers and Resources\n\n`wrsrcli` is an asset manager under development for Workers and Resources: Soviet Republic. \n\nCurrent features include:\n\n- Scan and create a manifest file of all workshop download\n- Create an HTML table listing basic information about your assets\n- Import assets lists\n  + Fetch missing downloads automatically\n  + Automated moving and backup procedure for manual install assets\n\n"
+  },
+  {
+    "file": "pages/wrsrcli/commands.md",
+    "title": "Commands",
+    "section-id": "wrsrcli",
+    "keywords": "",
+    "description": "",
+    "author": "WRSR-Tools",
+    "created": "2026-09-20 01:20",
+    "modified": "",
+    "language": "en",
+    "body": "# Commands\n\nPlaceholder\n"
+  },
+  {
+    "file": "pages/wrsrcli/installation.md",
+    "title": "Installation",
+    "section-id": "wrsrcli",
+    "keywords": "",
+    "description": "",
+    "author": "WRSR-Tools",
+    "created": "2026-09-20 01:20",
+    "modified": "",
+    "language": "en",
+    "body": "# Installation\n\nPlaceholder\n"
+  },
+  {
+    "file": "pages/wrsrcli/introduction.md",
+    "title": "Introduction",
+    "section-id": "wrsrcli",
+    "keywords": "",
+    "description": "",
+    "author": "WRSR-Tools",
+    "created": "2026-09-20 01:15",
+    "modified": "",
+    "language": "en",
+    "body": "# wrsrcli\n\n## What is it?\n\n`wrsrcli` is a command line tool to organise your Workers and Resources: Soviet Republic assets. \n\n"
+  }
+]
