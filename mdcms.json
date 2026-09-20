@@ -21,15 +21,19 @@
     "assets/themes/tx-zim-bold.yaml",
     "config.yml",
     "index.html",
-    "mdcms.exe",
     "nav.yml",
     "pages/home.md",
+    "pages/wmls/standard.beta.md",
+    "pages/wmls/standard.beta.md.backup",
+    "pages/wmls/standard.v1.md",
+    "pages/wmls/standard.v1.md.backup",
     "pages/wrsrcli/commands.md",
     "pages/wrsrcli/commands.md.backup",
     "pages/wrsrcli/installation.md",
     "pages/wrsrcli/installation.md.backup",
     "pages/wrsrcli/introduction.md",
     "pages/wrsrcli/introduction.md.backup",
+    "posts/home.md",
     "README.md",
     "search.json",
     "service-worker.js",
@@ -37,6 +41,6 @@
   ],
   "dirs": [
     "assets/fonts",
-    "posts"
+    "state"
   ]
 }

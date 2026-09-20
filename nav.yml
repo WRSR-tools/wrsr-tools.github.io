@@ -8,22 +8,47 @@ sections:
     sort: 100
     pagesvisibility: visible
 
+  - code: wmls
+    defaultname: Wmls
+    sort: 110
+    pagesvisibility: visible
+
 pages:
   - file: pages/home.md
     title: Home
     sort: 100
+    variants: [current]
+    titles:
+      current: Home
+
+  - file: pages/wmls/standard.md
+    title: Standard
+    sort: 100
+    variants: [beta, v1]
+    titles:
+      beta: Standard
+      v1: Current standard
 
   - file: pages/wrsrcli/introduction.md
     title: Introduction
     section-id: wrsrcli
     sort: 200
+    variants: [current]
+    titles:
+      current: Introduction
 
   - file: pages/wrsrcli/commands.md
     title: Commands
     section-id: wrsrcli
     sort: 210
+    variants: [current]
+    titles:
+      current: Commands
 
   - file: pages/wrsrcli/installation.md
     title: Installation
     section-id: wrsrcli
     sort: 220
+    variants: [current]
+    titles:
+      current: Installation

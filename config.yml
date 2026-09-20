@@ -43,7 +43,7 @@ offline-message: "This page is not available offline. Connect to the internet an
 # sitedescription: A short description for meta tags
 # logo: logo.svg             # filename in assets/images/
 # favicon: favicon.png
-# footer: "© 2026 Your Name"
+footer: (C) 2026 - WRSR-Tools. Licenced under the Apache 2 License.
 
 # ──────────────────────────────────
 # Layout (optional)
@@ -68,3 +68,23 @@ callouts:
     en:
       title: "PLEASE NOTE:"
       text: This page has been translated with artificial intelligence. It has not been reviewed by staff yet.
+
+default-category:
+  code: current
+  name: Current
+  direction: ltr
+
+categories-use: yes
+
+categories:
+  - code: Current
+    name: Current
+    direction: ltr
+  - code: v1
+    name: Version 1
+    direction: ltr
+  - code: beta
+    name: Beta
+    direction: ltr
+
+categories-dates: no

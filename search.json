@@ -9,7 +9,34 @@
     "created": "",
     "modified": "",
     "language": "en",
-    "body": "# `wrsrcli` - an asset manager for Workers and Resources\n\n`wrsrcli` is an asset manager under development for Workers and Resources: Soviet Republic. \n\nCurrent features include:\n\n- Scan and create a manifest file of all workshop download\n- Create an HTML table listing basic information about your assets\n- Import assets lists\n  + Fetch missing downloads automatically\n  + Automated moving and backup procedure for manual install assets\n\n"
+    "body": "# `wrsrcli` - an asset manager for Workers and Resources\n\n`wrsrcli` is an asset manager under development for Workers and Resources: Soviet Republic. \n\nCurrent features include:\n\n- Scan and create a manifest file of all workshop download\n- Create an HTML table listing basic information about your assets\n- Import assets lists\n  + Fetch missing downloads automatically\n  + Automated moving and backup procedure for manual install assets\n\n",
+    "category": "current"
+  },
+  {
+    "file": "pages/wmls/standard.md",
+    "title": "Standard",
+    "section-id": null,
+    "keywords": "",
+    "description": "",
+    "author": null,
+    "created": "",
+    "modified": "",
+    "language": "en",
+    "body": "# WMLS - WRSRCLI Markup Language Standard\n\n`wrsrcli` can import YAML files to perform the following functions:\n\n- Fetch and present metadata about downloaded files\n- Fetch and install files not yet downloaded\n- Overwrite and remove files \n- Restore backups\n\nThis standard describes the keys and values in use and expected future implementation.\n\n| | |  \n|---|---|  \n|**CANONICAL WEB ADDRESS**|https://wrsr-tools.github.io/#pages/wmls/standard.md|\n|**CURRENT VERSION**|Version 1 (`v1`)|  \n|**CURRENT VERSION DATE**|19 September 2026|\n|**LICENCE**|[Apache 2](pages/wmls/licence.md)|\n\n## 0. Basic overview\n\nWMLS files are YAML files. YAML rules apply. This standard defines valid keys and values to help users and developers create proper import files for `wrsrcli`.\n\nThis standard and the tool that uses it are licenced under the Apache 2 licence. You are free to use any part of the documentation or code in your own project. Development happens on [GitHub](https://github.com/wrsr-tools/wrsrcli) and are documented on [GitHub Pages](https://wrsr-tools.github.io/).\n\n## 1. Version\n\n`wrsrcli` parses according to the rules in WMLS. Starting with `v1`, each released version will support the one before it. Each file  **must** declare a version as the first line in their file:\n\n```yaml\nversion: 1\n```\n\n\n**CURRENT STANDARD: `beta`:** The current standard version is `beta`. The current standard **does not** declare a version.**Support for the `beta` version will be dropped once `v1` is released.**\n\n## 2. Current standard - `beta`\n\n### Item identifier\n\nEach WMLS file targets defined workshop assets. The `beta` only accepts a single item in each file, with top-level keys determining the operations. Therefore, each entry in a file starts with `item: {steamid}`, where `{steamid}` is the asset's numerical identifier in the Steam workshop (visible to users as the last part of an asset's web address: `https://steamcommunity.com/sharedfiles/filedetails/?id=NNNNNNNNNN`).\n\n```yaml\nitem: NNNNNNNNNN\n```\n\n#### Item keys\n\nUnder the item, two operations can be defined:\n\n##### `copy:` \n\n`copy:` instructs `wrsrcli` to copy the defined files in the workshop file to another workshop folder or a folder in the game root. `copy:` requires a source (`src`) and a destination (`dst`).\n\nTo copy the content of the folder `signs` in workshop folder `NNNNNNNNNN` and move to `signs` in `media_soviet` , first declare the item and then the action:\n\n```yaml\nitem: NNNNNNNNNN\n```\n\nThen you declare the action:\n```yaml\ncopy:\n  - src: signs/\n    dst: \"[GAME]/media_soviet/signs/\"\n```\n\nTo copy only an individual file, specify it as the source, and specify the folder in which it is to be placed: \n\n```yaml\ncopy:\n  - src: signs/\n    dst: \"[GAME]/media_soviet/signs/\"\n```\n \n The destination can also be another workshop folder. For example, to replace a file in another workshop folder (e.g., because to update an asset's parameters), you can do the following to replace `building.ini` in the destination item's root folder:\n \n ```yaml\ncopy:\n  - src: patch/building.ini\n    dst: \"[WORKSHOP]/3621284903/\"\n ```\n \n#### `remove:`\n\nTo remove a specified folder or file, you declare `remove:` and list the folders or files to be removed:\n\n```yaml\nremove:\n  - \"[GAME]/media_soviet/signs/oldfolder/\"\n  - \"[GAME]/media_soviet/signs/stale.ini\"\n```\n\nThese operations can be combined:\n\n```yaml\nitem: 3780739284\n\ncopy:\n  - src: signs/\n    dst: \"[GAME]/media_soviet/signs/\"\n  - src: signscript.txt\n    dst: \"[GAME]/media_soviet/signs/\"\n  - src: patch/building.ini\n    dst: \"[WORKSHOP]/3621284903/\"\n\nremove:\n  - \"[GAME]/media_soviet/signs/oldfolder/\"\n  - \"[GAME]/media_soviet/signs/stale.ini\"\n  ```\n\n### Variables\n\nWMLS specifies two variables:\n\n- `[GAME]`: This variable resolves to your game install folder (often `C:\\Program Files (x86)\\Steam\\steamapps\\common\\SovietRepublic\\`).\n- `[WORKSHOP]`: This variable resolves to your workshop root folder (often `C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\784150`). \n\n## 3. Future developments\n\n### Version 1: Full multi-item support and dependency handling\n\nVersion 1 adds support for:\n\n- Multiple items in a list file\n- Dependencies, both mandatory (`depends_mandatory:`) and optional (`depends_optional:`);\n- Requires the use of `*` in `src` to tell the parser that all files and folders in the given path should recursively be moved to the `dst` path:\n\n```yaml\nversion: 1\n\nitems:\n  - item: NNNNNNNNNN\n    copy:\n      - src: \"*\"\n        dst: \"[GAME]/media_soviet/paths/\"\n    remove:\n      - \"[GAME]/media_soviet/paths/filen.ame\"\n\n  - item: YYYYYYYYYY\n    copy:\n      - src: \"media_soviet/paths/\"\n        dst: \"[GAME]/media_soviet/paths/\"\n    remove:\n      - \"[GAME]/media_soviet/paths/filen.ame\"\n    depends_mandatory:\n      - item: XXXXXXXXXX\n    depends_optional:\n      - item: ZZZZZZZZZZ\n        message: \"Short message to user which is shown when the user is asked to decide to whether to install or not\"\n```\n\n### Roadmap\n\nIntended additions include:\n\n- **Conditional co",
+    "category": "beta"
+  },
+  {
+    "file": "pages/wmls/standard.md",
+    "title": "Current standard",
+    "section-id": "wmls",
+    "keywords": "",
+    "description": "",
+    "author": "WRSR-Tools",
+    "created": "2026-09-20 16:15",
+    "modified": "",
+    "language": "en",
+    "body": "# WMLS - WRSRCLI Markup Language Standard\n\n`wrsrcli` can import YAML files to perform the following functions:\n\n- Fetch and present metadata about downloaded files\n- Fetch and install files not yet downloaded\n- Overwrite and remove files \n- Restore backups\n\nThis standard describes the keys and values in use and expected future implementation.\n\n| | |  \n|---|---|  \n|**CANONICAL WEB ADDRESS**|https://wrsr-tools.github.io/#pages/wmls/standard.md|\n|**CURRENT VERSION**|Version 1 (`v1`)|  \n|**CURRENT VERSION DATE**|20 September 2026|\n|**LICENCE**|[Apache 2](pages/wmls/licence.md)|\n\n## 0. Basic overview\n\nWMLS files are YAML files. YAML rules apply. This standard defines valid keys and values to help users and developers create proper import files for `wrsrcli`.\n\nThis standard and the tool that uses it are licenced under the Apache 2 licence. You are free to use any part of the documentation or code in your own project. Development happens on [GitHub](https://github.com/wrsr-tools/wrsrcli) and are documented on [GitHub Pages](https://wrsr-tools.github.io/).\n\n## 1. Version\n\n`wrsrcli` parses according to the rules in WMLS. Each released version supports the one before it. Each file **must** declare a version as the first line in their file:\n\n```yaml\nversion: 1\n```\n\n## 2. Current standard - `v1`\n\n### Item identifier\n\nEach WMLS file targets defined workshop assets. `v1` accepts one or more items per file. Each item starts with `item: {steamid}`, where `{steamid}` is the asset's numerical identifier in the Steam workshop (visible to users as the last part of an asset's web address: `https://steamcommunity.com/sharedfiles/filedetails/?id=NNNNNNNNNN`).\n\nItems are declared under `items:`, one list entry per item:\n\n```yaml\nversion: 1\n\nitems:\n  - item: NNNNNNNNNN\n```\n\nA file with a single item still uses `items:`, with one entry in the list.\n\n#### Item keys\n\nUnder each item, the following keys can be defined:\n\n##### `copy:`\n\n`copy:` instructs `wrsrcli` to copy the defined files in the workshop file to another workshop folder or a folder in the game root. `copy:` requires a source (`src`) and a destination (`dst`).\n\nTo copy the content of the folder `signs` in workshop folder `NNNNNNNNNN` and move to `signs` in `media_soviet`, first declare the item and then the action:\n\n```yaml\nitems:\n  - item: NNNNNNNNNN\n```\n\nThen you declare the action:\n```yaml\n    copy:\n      - src: signs/\n        dst: \"[GAME]/media_soviet/signs/\"\n```\n\nTo copy only an individual file, specify it as the source, and specify the folder in which it is to be placed:\n\n```yaml\n    copy:\n      - src: signscript.txt\n        dst: \"[GAME]/media_soviet/signs/\"\n```\n\nThe destination can also be another workshop folder. For example, to replace a file in another workshop folder (e.g., because to update an asset's parameters), you can do the following to replace `building.ini` in the destination item's root folder:\n\n```yaml\n    copy:\n      - src: patch/building.ini\n        dst: \"[WORKSHOP]/3621284903/\"\n```\n\nTo copy everything in the origin item's own folder (except `workshopconfig.ini`, which is Steam's own metadata and is never copied), use `*`:\n\n```yaml\n    copy:\n      - src: \"*\"\n        dst: \"[GAME]/media_soviet/paths/\"\n```\n\n`*` always means \"everything in the origin item's root folder.\" It does not act as a wildcard inside a sub-path — `src: \"signs/*\"` is not valid; use `src: \"signs/\"` to copy that folder's contents instead.\n\n##### `remove:`\n\nTo remove a specified folder or file, you declare `remove:` and list the folders or files to be removed:\n\n```yaml\n    remove:\n      - \"[GAME]/media_soviet/signs/oldfolder/\"\n      - \"[GAME]/media_soviet/signs/stale.ini\"\n```\n\n##### `depends-mandatory:`\n\nMandatory dependencies which will be automatically downloaded. Each is defined by an `item` key:\n\n```yaml\n    depends-mandatory:\n      - item: XXXXXXXXXX\n```\n\n##### `depends-optional:`\n\nOptional dependencies. These can be used where a dependency is not necessary but would otherwise enhance gameplay. Use `item` to define the item to download, and `message` to present a message to the user when asking if the item should be downloaded.\n\n```yaml\n    depends-optional:\n      - item: ZZZZZZZZZZ\n        message: \"Short message to user which is shown when the user is asked to decide to whether to install or not\"\n```\n\n#### Combined example\n\nAll keys can be combined, and a file can describe multiple items:\n\n```yaml\nversion: 1\n\nitems:\n  - item: NNNNNNNNNN\n    copy:\n      - src: \"*\"\n        dst: \"[GAME]/media_soviet/paths/\"\n    remove:\n      - \"[GAME]/media_soviet/paths/filen.ame\"\n\n  - item: YYYYYYYYYY\n    copy:\n      - src: \"media_soviet/paths/\"\n        dst: \"[GAME]/media_soviet/paths/\"\n    remove:\n      - \"[GAME]/media_soviet/paths/filen.ame\"\n    depends-mandatory:\n      - item: XXXXXXXXXX\n    depends-optional:\n      - item: ZZZZZZZZZZ\n        message: \"Short message to user which is shown when the user is asked to decide to whether to install or not\"\n```\n\n### Variables\n\nWMLS specifies two vari",
+    "category": "v1"
   },
   {
     "file": "pages/wrsrcli/commands.md",
@@ -21,7 +48,8 @@
     "created": "2026-09-20 01:20",
     "modified": "",
     "language": "en",
-    "body": "# Commands\n\nPlaceholder\n"
+    "body": "# Commands\n\nPlaceholder\n",
+    "category": "current"
   },
   {
     "file": "pages/wrsrcli/installation.md",
@@ -33,7 +61,8 @@
     "created": "2026-09-20 01:20",
     "modified": "",
     "language": "en",
-    "body": "# Installation\n\nPlaceholder\n"
+    "body": "# Installation\n\nPlaceholder\n",
+    "category": "current"
   },
   {
     "file": "pages/wrsrcli/introduction.md",
@@ -45,6 +74,20 @@
     "created": "2026-09-20 01:15",
     "modified": "",
     "language": "en",
-    "body": "# wrsrcli\n\n## What is it?\n\n`wrsrcli` is a command line tool to organise your Workers and Resources: Soviet Republic assets. \n\n"
+    "body": "# wrsrcli\n\n## What is it?\n\n`wrsrcli` is a command line tool to organise your Workers and Resources: Soviet Republic assets. \n\n",
+    "category": "current"
+  },
+  {
+    "file": "posts/home.md",
+    "title": "Home",
+    "section-id": null,
+    "keywords": "",
+    "description": "",
+    "author": "WRSR-Tools",
+    "created": "",
+    "modified": "",
+    "language": "en",
+    "body": "# `wrsrcli` - an asset manager for Workers and Resources\n\n`wrsrcli` is an asset manager under development for Workers and Resources: Soviet Republic. \n\nCurrent features include:\n\n- Scan and create a manifest file of all workshop download\n- Create an HTML table listing basic information about your assets\n- Import assets lists\n  + Fetch missing downloads automatically\n  + Automated moving and backup procedure for manual install assets\n\n",
+    "category": null
   }
 ]
