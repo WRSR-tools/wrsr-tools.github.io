@@ -30,7 +30,7 @@ For certain functions, you need **SteamCMD** and a **Steam Web API** key. `wrsrc
 
 ## WMLS - markup language standard for wrsrcli
 
-`wrsrcli` uses YAML files to tell the tool what to subscribe to. 
+`wrsrcli` uses YAML files to tell the tool what to d
 
 
 

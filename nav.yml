@@ -43,7 +43,7 @@ pages:
   - file: pages/wrsrcli/commands.md
     title: Commands
     section-id: wrsrcli
-    sort: 210
+    sort: 220
     variants: [current]
     titles:
       current: Commands
@@ -51,7 +51,7 @@ pages:
   - file: pages/wrsrcli/installation.md
     title: Installation
     section-id: wrsrcli
-    sort: 220
+    sort: 210
     variants: [current]
     titles:
       current: Installation
