@@ -30,7 +30,7 @@
 # ──────────────────────────────────
 sitename: WRSR-Tools
 navigation: sidebar
-theme: assets/themes/tx-zim-bold.yaml
+theme: assets/themes/industrial.yaml
 
 pwa: no
 pwa-name: MD-CMS Phase 7 Test

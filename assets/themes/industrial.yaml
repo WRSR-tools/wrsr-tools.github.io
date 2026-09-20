@@ -1,0 +1,97 @@
+# mdcms theme v0.6.0
+# mdcms theme — industrial
+# Workers & Resources: oxidised steel on newsprint. Eastern-bloc technical
+# manual — rust-red anchor, concrete surfaces, warm bone text.
+
+# ──────────────────────────────────
+# Colours
+# ──────────────────────────────────
+palette:
+  light:
+    primary: "#B7410E"              # iron oxide — headings, links, active nav
+    surface: "#2C2C28"              # poured concrete sidebar
+    page: "#EFE8DA"                 # aged manual newsprint
+    ink: "#22201C"                  # letterpress black, warm
+    ink-muted: "#6B6155"            # pencil annotation
+    on-surface: "#D6CFC1"
+    on-surface-active: "#EA7A38"    # rust lifted for legibility on concrete
+    on-surface-title: "#F2EDE1"
+    on-surface-heading: "#9A9183"
+    on-surface-note: "#9A9183"
+    on-surface-icon: "#9A9183"
+    divider: "#C4B9A6"              # rule lines on the printed page
+
+  dark:
+    primary: "#E2712F"              # rust under sodium lamps
+    surface: "#111110"              # machine hall, lights out
+    page: "#1B1A16"                 # warm charcoal
+    ink: "#DFD7C6"                  # bone
+    ink-muted: "#978D7C"
+    on-surface: "#C9C1B2"
+    on-surface-active: "#EA7A38"
+    on-surface-title: "#EFE8DA"
+    on-surface-heading: "#8A8173"
+    on-surface-note: "#8A8173"
+    on-surface-icon: "#8A8173"
+    divider: "#33312B"
+
+# ──────────────────────────────────
+# Semantic colours
+# Instrument-panel hues: steel blue, hazard ochre, olive, signal crimson.
+# Error sits deliberately darker and redder than `primary` so a warning
+# never reads as a link.
+# ──────────────────────────────────
+colours-semantic:
+  info: "#3A6486"
+  warning: "#8A6210"
+  success: "#4C6B2F"
+  error: "#8E1F17"
+
+colours-semantic-dark:
+  info: "#84A9C4"
+  warning: "#DFB35C"
+  success: "#A3BC77"
+  error: "#E0837A"
+
+# ──────────────────────────────────
+# Callout defaults
+# primary-colour matches colours-semantic (light mode).
+# ──────────────────────────────────
+callouts:
+  info:
+    icon: info
+    primary-colour: "#3A6486"
+    background-colour: "#3A6486"
+  warning:
+    icon: warning
+    primary-colour: "#8A6210"
+    background-colour: "#8A6210"
+  success:
+    icon: success
+    primary-colour: "#4C6B2F"
+    background-colour: "#4C6B2F"
+  error:
+    icon: error
+    primary-colour: "#8E1F17"
+    background-colour: "#8E1F17"
+
+# ──────────────────────────────────
+# Typography
+# Oswald — condensed grotesque in the Alternate Gothic line, the standard
+# voice of Soviet signage and section headings. Libre Franklin — a revival of
+# Franklin Gothic (1912), the pre-Helvetica workhorse of technical printing:
+# closed apertures and flat terminals, impersonal rather than humanist.
+# Both open-licensed, both carrying Cyrillic and Latin Extended.
+# Format: "provider:Font Name:weight"  (provider: bunny | google)
+# ──────────────────────────────────
+font-body: "bunny:Libre Franklin:400"
+font-heading: "bunny:Oswald:600"
+font-size: 1.00        # unitless multiplier (1.0 = 16px base)
+line-height: 1.55      # tighter leading — manual density, not blog airiness
+
+# ──────────────────────────────────
+# Layout
+# Narrower measure than the default: a technical manual is a column, not a page.
+# ──────────────────────────────────
+main-width: 72em
+nav-width: 20em
