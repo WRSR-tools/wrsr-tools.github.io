@@ -8,6 +8,12 @@ modified: 2026-09-20 16:15
 ---
 # WMLS - WRSRCLI Markup Language Standard
 
+```mdcms callout-error
+title: This version of the WMLS is no longer supported
+
+This is the `beta` version of the WMLS. It is no longer supported. This was the current version until 20 September 2026, at which point it was superseded by `v1`.
+```
+
 `wrsrcli` can import YAML files to perform the following functions:
 
 - Fetch and present metadata about downloaded files
