@@ -80,8 +80,10 @@ categories:
   - code: v1
     name: Version 1
     direction: ltr
+    notfoundmessage: "This version of the page does not exist."
   - code: beta
     name: Beta
     direction: ltr
+    notfoundmessage: "This version of the page does not exist."
 
 categories-dates: no
