@@ -7,9 +7,10 @@ sections:
     defaultname: wrsrcli
     sort: 100
     pagesvisibility: visible
+    pagination: on
 
   - code: wmls
-    defaultname: Wmls
+    defaultname: WMLS
     sort: 110
     pagesvisibility: visible
 
