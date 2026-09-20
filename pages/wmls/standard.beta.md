@@ -1,9 +1,9 @@
 ---
-title: Deprecated: WMLS (beta)
+title: WRSRCLI Markup Language Standard
 section-id: wmls
-sort: 901
+sort: 100
 author: WRSR-Tools
-created: 2026-09-19 08:00
+created: 2026-09-19 00:15
 modified: 2026-09-20 16:15
 ---
 # WMLS - WRSRCLI Markup Language Standard

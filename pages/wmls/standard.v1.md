@@ -1,7 +1,7 @@
 ---
-title: Current standard
+title: WRSRCLI Markup Language Standard
 section-id: wmls
-sort: 101
+sort: 100
 author: WRSR-Tools
 created: 2026-09-20 16:15
 ---

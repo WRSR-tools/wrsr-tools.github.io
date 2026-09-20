@@ -23,12 +23,14 @@ pages:
       current: Home
 
   - file: pages/wmls/standard.md
-    title: Standard
+    title: WRSRCLI Markup Language Standard
+    section-id: wmls
     sort: 100
-    variants: [beta, v1]
+    variants: [beta, current, v1]
     titles:
-      beta: Standard
-      v1: Current standard
+      beta: WRSRCLI Markup Language Standard
+      current: WRSRCLI Markup Language Standard
+      v1: WRSRCLI Markup Language Standard
 
   - file: pages/wrsrcli/introduction.md
     title: Introduction
