@@ -77,12 +77,14 @@ callouts:
 
 # ──────────────────────────────────
 # Typography
-# Oswald — condensed grotesque, the standard voice of Soviet signage and
-# section headings. PT Sans — Paratype's public typeface for the Russian
-# Federation, open-licensed, built for Cyrillic and Latin side by side.
+# Oswald — condensed grotesque in the Alternate Gothic line, the standard
+# voice of Soviet signage and section headings. Libre Franklin — a revival of
+# Franklin Gothic (1912), the pre-Helvetica workhorse of technical printing:
+# closed apertures and flat terminals, impersonal rather than humanist.
+# Both open-licensed, both carrying Cyrillic and Latin Extended.
 # Format: "provider:Font Name:weight"  (provider: bunny | google)
 # ──────────────────────────────────
-font-body: "bunny:PT Sans:400"
+font-body: "bunny:Libre Franklin:400"
 font-heading: "bunny:Oswald:600"
 font-size: 1.00        # unitless multiplier (1.0 = 16px base)
 line-height: 1.55      # tighter leading — manual density, not blog airiness
