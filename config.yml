@@ -77,9 +77,6 @@ default-category:
 categories-use: yes
 
 categories:
-  - code: Current
-    name: Current
-    direction: ltr
   - code: v1
     name: Version 1
     direction: ltr
